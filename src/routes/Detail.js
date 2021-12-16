@@ -5,7 +5,7 @@ import { useQuery, gql } from '@apollo/client';
 
 const GET_MOVIE = gql`
   query getById($id: Int!) {
-    movie(id: $id) {
+    movie(id: 38509) {
       title
       medium_cover_image
       description_intro
@@ -16,9 +16,10 @@ const GET_MOVIE = gql`
 function Detail() {
   const { id } = useParams();
   console.log(parseInt(id));
-  const { loading, data } = useQuery(GET_MOVIE, {
-    variables: { id: parseInt(id) },
+  const { loading, error, data } = useQuery(GET_MOVIE, {
+    variables: { id: 38509 },
   });
+  console.log(error);
   if (loading) {
     return 'loading';
   }
